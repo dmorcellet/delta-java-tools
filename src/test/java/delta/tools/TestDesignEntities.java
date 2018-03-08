@@ -8,14 +8,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import junit.framework.TestCase;
-import delta.common.utils.environment.FileSystem;
 import delta.common.utils.files.FilesFinder;
 import delta.common.utils.files.filter.ExtensionPredicate;
 import delta.tools.design.DependenciesComputer;
 import delta.tools.design.JavaSourceFileParser;
 import delta.tools.design.core.DesignEntitiesManager;
 import delta.tools.design.core.JavaPackage;
+import junit.framework.TestCase;
 
 public class TestDesignEntities extends TestCase
 {
@@ -36,9 +35,8 @@ public class TestDesignEntities extends TestCase
     mgr.buildClass(TestCase.class.getName(),"junit");
 */
 
-    File deltaHome=FileSystem.getDeltaHomeDir();
-    File src=new File(deltaHome,"src");
-    File codeRoot=new File(src,"java");
+    File src=new File("src").getAbsoluteFile();
+    File codeRoot=new File(new File(src,"main"),"java");
     FilesFinder finder=new FilesFinder();
     FileFilter filter=new ExtensionPredicate("java",false);
     List<File> files=finder.find(FilesFinder.ABSOLUTE_MODE,codeRoot,filter,true);
