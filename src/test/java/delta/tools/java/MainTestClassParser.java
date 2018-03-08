@@ -8,7 +8,7 @@ public class MainTestClassParser
 {
   public MainTestClassParser()
   {
-    String path=Configurations.getUserConfiguration().getStringValue("JAVA", "TEST_CLASS_NAME", "/tmp/toto");
+    String path="delta.common.utils.files.iterator.FileIterator";
     ClassSource source=new ClassSource();
     ClassFile clazz=source.getClass(path);
     while (clazz!=null)
