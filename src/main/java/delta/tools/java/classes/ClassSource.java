@@ -16,7 +16,7 @@ public class ClassSource
 
 	public ClassSource()
 	{
-		_classPath=new ClassPath();
+		_classPath=new ClassPath(ClassPath.getClassPath());
 		_classMap=new HashMap<String,ClassFile>();
 	}
 
