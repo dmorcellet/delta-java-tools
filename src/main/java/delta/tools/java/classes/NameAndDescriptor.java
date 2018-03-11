@@ -4,6 +4,7 @@ public class NameAndDescriptor
 {
   private short _nameIndex;
   private short _descriptorIndex;
+
   public NameAndDescriptor(short nameIndex, short descriptorIndex)
   {
     _nameIndex=nameIndex;

@@ -29,7 +29,7 @@ public class DependenciesComputer
     {
       ret=new HashSet<JavaPackage>();
       Set<JavaClass> classDeps=clazz.getClassDependencies();
-      if ((classDeps!=null) && (classDeps.size()>0))
+      if ((classDeps!=null)&&(classDeps.size()>0))
       {
         JavaClass currentClassDep;
         JavaPackage classPackage;
@@ -54,7 +54,7 @@ public class DependenciesComputer
     {
       ret=new HashSet<JavaPackage>();
       Set<JavaClass> classes=javaPackage.getClasses();
-      if ((classes!=null) && (classes.size()>0))
+      if ((classes!=null)&&(classes.size()>0))
       {
         JavaClass currentClass;
         Set<JavaPackage> packageDeps;
@@ -69,7 +69,7 @@ public class DependenciesComputer
       }
 
       List<JavaPackage> subPackages=javaPackage.getSubPackages();
-      if ((subPackages!=null) && (subPackages.size()>0))
+      if ((subPackages!=null)&&(subPackages.size()>0))
       {
         JavaPackage currentPackage;
         Set<JavaPackage> packageDeps;

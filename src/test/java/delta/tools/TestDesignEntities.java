@@ -29,11 +29,11 @@ public class TestDesignEntities extends TestCase
   public void testDump()
   {
     DesignEntitiesManager mgr=new DesignEntitiesManager();
-/*
-    mgr.buildClass(TestDesignEntities.class.getName(),"delta");
-    mgr.buildClass(JavaPackage.class.getName(),"delta");
-    mgr.buildClass(TestCase.class.getName(),"junit");
-*/
+    /*
+     * mgr.buildClass(TestDesignEntities.class.getName(),"delta");
+     * mgr.buildClass(JavaPackage.class.getName(),"delta");
+     * mgr.buildClass(TestCase.class.getName(),"junit");
+     */
 
     File src=new File("src").getAbsoluteFile();
     File codeRoot=new File(new File(src,"main"),"java");
@@ -47,9 +47,9 @@ public class TestDesignEntities extends TestCase
       javaFile=it.next();
       parser.parse(javaFile);
     }
-    //JavaPackage rootPackage=mgr.getPackage("");
-    //rootPackage.dump(System.out,-1);
-    //mgr.dump(System.out);
+    // JavaPackage rootPackage=mgr.getPackage("");
+    // rootPackage.dump(System.out,-1);
+    // mgr.dump(System.out);
     DependenciesComputer deps=new DependenciesComputer(mgr);
     {
       String thisClassName=TestDesignEntities.class.getName();

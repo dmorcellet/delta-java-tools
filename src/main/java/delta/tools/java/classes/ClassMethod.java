@@ -28,11 +28,11 @@ public class ClassMethod
     StringBuffer sb=new StringBuffer();
     String accessFlags=MethodAccessFlags.toString(_accessFlags);
     sb.append(accessFlags);
-    if(accessFlags.length()>0)
+    if (accessFlags.length()>0)
     {
       sb.append(' ');
     }
-    sb.append(new DescriptorParser().parseMethodDescriptor(_type, _name,useFullyQualifiedNames));
+    sb.append(new DescriptorParser().parseMethodDescriptor(_type,_name,useFullyQualifiedNames));
     return sb.toString();
   }
 }

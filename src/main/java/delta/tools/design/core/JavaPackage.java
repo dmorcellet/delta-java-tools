@@ -94,14 +94,16 @@ public class JavaPackage
     return getFullname();
   }
 
-  public void dump(PrintStream out,int level)
+  public void dump(PrintStream out, int level)
   {
-    for(int i=0;i<level;i++) out.print('\t');
+    for(int i=0;i<level;i++)
+      out.print('\t');
     out.println(getFullname());
     for(Iterator<JavaClass> it=_classes.iterator();it.hasNext();)
     {
       JavaClass item=it.next();
-      for(int i=0;i<level+1;i++) out.print('\t');
+      for(int i=0;i<level+1;i++)
+        out.print('\t');
       out.println(item.getFullname());
     }
     List<JavaPackage> subPackages=getSubPackages();
@@ -117,7 +119,7 @@ public class JavaPackage
     return _comparator;
   }
 
-  private static class PackageNameComparator implements Comparator<JavaPackage>,Serializable
+  private static class PackageNameComparator implements Comparator<JavaPackage>, Serializable
   {
     /**
      * Compares java packages by their full name.

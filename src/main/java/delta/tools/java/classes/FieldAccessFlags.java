@@ -15,40 +15,40 @@ public class FieldAccessFlags
     StringBuffer sb=new StringBuffer();
     int len;
 
-    if((accessFlags&PUBLIC)!=0)
+    if ((accessFlags&PUBLIC)!=0)
     {
       sb.append("public ");
     }
-    if((accessFlags&PROTECTED)!=0)
+    if ((accessFlags&PROTECTED)!=0)
     {
       sb.append("protected ");
     }
-    if((accessFlags&PRIVATE)!=0)
+    if ((accessFlags&PRIVATE)!=0)
     {
       sb.append("private ");
     }
-    if((accessFlags&STATIC)!=0)
+    if ((accessFlags&STATIC)!=0)
     {
       sb.append("static ");
     }
-    if((accessFlags&FINAL)!=0)
+    if ((accessFlags&FINAL)!=0)
     {
       sb.append("final ");
     }
-    if((accessFlags&TRANSIENT)!=0)
+    if ((accessFlags&TRANSIENT)!=0)
     {
       sb.append("transient ");
     }
-    if((accessFlags&VOLATILE)!=0)
+    if ((accessFlags&VOLATILE)!=0)
     {
       sb.append("volatile ");
     }
 
     len=sb.length();
-    if(len>0)
+    if (len>0)
     {
-      //trim trailing space
-      return sb.toString().substring(0, len-1);
+      // trim trailing space
+      return sb.toString().substring(0,len-1);
     }
     return "";
   }

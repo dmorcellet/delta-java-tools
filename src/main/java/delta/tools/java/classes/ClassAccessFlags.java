@@ -12,27 +12,27 @@ public class ClassAccessFlags
   {
     StringBuffer sb=new StringBuffer();
     int len;
-    if((accessFlags&PUBLIC)!=0)
+    if ((accessFlags&PUBLIC)!=0)
     {
       sb.append("public ");
     }
-    if((accessFlags&ABSTRACT)!=0)
+    if ((accessFlags&ABSTRACT)!=0)
     {
       sb.append("abstract ");
     }
-    if((accessFlags&FINAL)!=0)
+    if ((accessFlags&FINAL)!=0)
     {
       sb.append("final ");
     }
-    if((accessFlags&INTERFACE)!=0)
+    if ((accessFlags&INTERFACE)!=0)
     {
       sb.append("interface ");
     }
 
     len=sb.length();
-    if(len>0)
+    if (len>0)
     {
-      return sb.toString().substring(0, len-1);
+      return sb.toString().substring(0,len-1);
     }
     return "";
   }

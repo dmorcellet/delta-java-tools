@@ -38,7 +38,7 @@ public class DesignEntitiesManager
       JavaArchive archive=null;
       if (archiveName.length()>0)
       {
-    	archive=getArchive(archiveName);
+        archive=getArchive(archiveName);
         clazz.setArchive(archive);
       }
     }

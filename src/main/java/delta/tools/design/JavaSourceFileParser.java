@@ -38,7 +38,7 @@ public class JavaSourceFileParser
     String packageName="";
 
     JavaClass clazz=null;
-    //classe_l.setArchive(SAArchive.getArchive(jarName));
+    // classe_l.setArchive(SAArchive.getArchive(jarName));
     TextFileReader reader=new TextFileReader(fichier_p);
     String ligne=null;
     if (reader.start())
@@ -89,7 +89,7 @@ public class JavaSourceFileParser
     }
   }
 
-  private JavaClass getClass(String packageName,String className)
+  private JavaClass getClass(String packageName, String className)
   {
     String classFQN="";
     if (packageName==null)

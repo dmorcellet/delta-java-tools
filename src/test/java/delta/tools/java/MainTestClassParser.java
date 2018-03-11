@@ -13,8 +13,8 @@ public class MainTestClassParser
     ClassFile clazz=source.getClass(path);
     while (clazz!=null)
     {
-    	clazz.getInterfaces();
-    	clazz=clazz.getSuperClass();
+      clazz.getInterfaces();
+      clazz=clazz.getSuperClass();
     }
   }
 

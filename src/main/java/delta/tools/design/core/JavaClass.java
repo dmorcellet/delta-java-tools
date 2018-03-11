@@ -98,8 +98,8 @@ public class JavaClass implements Comparable<JavaClass>
       _archive=archive_p;
       if (archive_p!=null)
       {
-	      _archive.addClass(this);
-	    }
+        _archive.addClass(this);
+      }
     }
   }
 

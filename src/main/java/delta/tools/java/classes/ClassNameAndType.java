@@ -4,6 +4,7 @@ public class ClassNameAndType
 {
   private short _classIndex;
   private short _nameAndTypeIndex;
+
   public ClassNameAndType(short classIndex, short nameAndTypeIndex)
   {
     _classIndex=classIndex;

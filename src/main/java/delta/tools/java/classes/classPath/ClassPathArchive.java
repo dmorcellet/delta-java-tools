@@ -8,7 +8,7 @@ import java.io.File;
  */
 public class ClassPathArchive extends ClassPathElement
 {
-  private static final String[] KNOWN_EXTENSIONS={".jar",".zip"};
+  private static final String[] KNOWN_EXTENSIONS= {".jar",".zip"};
 
   public ClassPathArchive(File path)
   {

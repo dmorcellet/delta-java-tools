@@ -79,7 +79,7 @@ public class JavaArchive
     return _comparator;
   }
 
-  private static class ArchiveNameComparator implements Comparator<JavaArchive>,Serializable
+  private static class ArchiveNameComparator implements Comparator<JavaArchive>, Serializable
   {
     /**
      * Compares java archives by their name.

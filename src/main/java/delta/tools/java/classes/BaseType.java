@@ -7,31 +7,31 @@ public class BaseType
   private static HashMap<Character,BaseType> _instancesMap=new HashMap<Character,BaseType>();
 
   private char _type;
-	private String _label;
-	private short _size;
+  private String _label;
+  private short _size;
 
   public BaseType(char type, String label, short size)
-	{
-		_type=type;
-		_label=label;
-		_size=size;
+  {
+    _type=type;
+    _label=label;
+    _size=size;
     _instancesMap.put(Character.valueOf(type),this);
-	}
+  }
 
-	public char getType()
-	{
-		return _type;
-	}
+  public char getType()
+  {
+    return _type;
+  }
 
   public String getLabel()
-	{
-		return _label;
-	}
+  {
+    return _label;
+  }
 
   public short getSize()
-	{
-		return _size;
-	}
+  {
+    return _size;
+  }
 
   public static BaseType getByName(char name)
   {

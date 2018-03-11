@@ -21,17 +21,17 @@ public class DescriptorParser
   {
     int max=methodDescriptor.length();
     _position=0;
-    if(methodDescriptor.charAt(_position)!='(')
+    if (methodDescriptor.charAt(_position)!='(')
     {
       return "";
     }
     _position++;
     ArrayList<String> parameterTypes=new ArrayList<String>();
-    while((_position<max)&&(methodDescriptor.charAt(_position)!=')'))
+    while ((_position<max)&&(methodDescriptor.charAt(_position)!=')'))
     {
       parameterTypes.add(parseType(methodDescriptor,useFullyQualifiedNames));
     }
-    if(_position==max)
+    if (_position==max)
     {
       return "";
     }
@@ -45,7 +45,7 @@ public class DescriptorParser
     int nbParameters=parameterTypes.size();
     for(int i=0;i<nbParameters;i++)
     {
-      if(i>0)
+      if (i>0)
       {
         sb.append(',');
       }
@@ -61,20 +61,20 @@ public class DescriptorParser
     int index=_position;
     int max=type.length();
     int dimensions=0;
-    while((index<max)&&(type.charAt(index)==BaseTypes.ARRAY_CODE))
+    while ((index<max)&&(type.charAt(index)==BaseTypes.ARRAY_CODE))
     {
       dimensions++;
       index++;
     }
-    if(index<max)
+    if (index<max)
     {
       StringBuffer sb=new StringBuffer();
-      if(type.charAt(index)==BaseTypes.OBJECT_CODE)
+      if (type.charAt(index)==BaseTypes.OBJECT_CODE)
       {
         index++;
         int lastPoint=-1;
         char c;
-        while((index<max)&&(type.charAt(index)!=BaseTypes.OBJECT_NAME_TERMINATOR))
+        while ((index<max)&&(type.charAt(index)!=BaseTypes.OBJECT_NAME_TERMINATOR))
         {
           c=type.charAt(index);
           if (c=='/') c='.';
@@ -83,8 +83,7 @@ public class DescriptorParser
           index++;
         }
         index++;
-        if ((lastPoint!=-1) & (useFullyQualifiedNames))
-        	sb.delete(0,lastPoint);
+        if ((lastPoint!=-1)&(useFullyQualifiedNames)) sb.delete(0,lastPoint);
       }
       else
       {

@@ -28,7 +28,7 @@ public class ClassField
     StringBuffer sb=new StringBuffer();
     String accessFlags=MethodAccessFlags.toString(_accessFlags);
     sb.append(accessFlags);
-    if(accessFlags.length()>0)
+    if (accessFlags.length()>0)
     {
       sb.append(' ');
     }
