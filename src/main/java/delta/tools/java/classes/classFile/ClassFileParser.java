@@ -100,11 +100,19 @@ public class ClassFileParser
         }
       }
       /*short accessFlags=*/_dis.readShort();
-      /*short thisClass=*/_dis.readShort();
+      short thisClass=_dis.readShort();
+      if (thisClass>0)
+      {
+        Short index=(Short)_constantsPool[thisClass];
+        String className=(String)_constantsPool[index.intValue()];
+        System.out.println(className);
+      }
       short superClass=_dis.readShort();
       if (superClass>0)
       {
-      	_classFile.setSuperClassName((String)_constantsPool[superClass-1]);
+        Short index=(Short)_constantsPool[superClass];
+        String superClassName=(String)_constantsPool[index.intValue()];
+      	_classFile.setSuperClassName(superClassName);
       }
 
       // Interfaces
