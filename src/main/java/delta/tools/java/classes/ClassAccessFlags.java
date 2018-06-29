@@ -1,17 +1,40 @@
 package delta.tools.java.classes;
 
+/**
+ * Flag values for class access modes.
+ * @author DAM
+ */
 public class ClassAccessFlags
 {
+  /**
+   * Public.
+   */
   public static final int PUBLIC=0x0001;
+  /**
+   * Final.
+   */
   public static final int FINAL=0x0010;
+  /**
+   * Super.
+   */
   public static final int SUPER=0x0020;
+  /**
+   * Interface.
+   */
   public static final int INTERFACE=0x0200;
+  /**
+   * Abstract.
+   */
   public static final int ABSTRACT=0x0400;
 
+  /**
+   * Build a displayable string for some access flags.
+   * @param accessFlags Access flags to use.
+   * @return A readable string.
+   */
   public static String toString(int accessFlags)
   {
     StringBuffer sb=new StringBuffer();
-    int len;
     if ((accessFlags&PUBLIC)!=0)
     {
       sb.append("public ");
@@ -28,12 +51,6 @@ public class ClassAccessFlags
     {
       sb.append("interface ");
     }
-
-    len=sb.length();
-    if (len>0)
-    {
-      return sb.toString().substring(0,len-1);
-    }
-    return "";
+    return sb.toString().trim();
   }
 }
