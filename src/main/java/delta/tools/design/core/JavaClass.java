@@ -4,6 +4,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Description of a Java class.
+ * @author DAM
+ */
 public class JavaClass implements Comparable<JavaClass>
 {
   /**
@@ -36,6 +40,11 @@ public class JavaClass implements Comparable<JavaClass>
    */
   private Set<JavaClass> _roClassDeps;
 
+  /**
+   * Constructor.
+   * @param name Class name.
+   * @param pakkage Parent package.
+   */
   JavaClass(String name, JavaPackage pakkage)
   {
     assert name!=null;
@@ -49,18 +58,30 @@ public class JavaClass implements Comparable<JavaClass>
     pakkage.addClass(this);
   }
 
+  /**
+   * Add a dependency to a given class.
+   * @param clazz Dependency to add.
+   */
   public void addClassDependency(JavaClass clazz)
   {
     assert clazz!=null;
     _classDeps.add(clazz);
   }
 
+  /**
+   * Add a dependency to a given package.
+   * @param pakkage Dependency to add.
+   */
   public void addPackageDependency(JavaPackage pakkage)
   {
     assert pakkage!=null;
     _packageDeps.add(pakkage);
   }
 
+  /**
+   * Get the name of this class.
+   * @return the name of this class.
+   */
   public String getName()
   {
     return _name;
@@ -77,37 +98,57 @@ public class JavaClass implements Comparable<JavaClass>
     return packageName+"."+_name;
   }
 
+  /**
+   * Get the parent package.
+   * @return the parent package.
+   */
   public JavaPackage getPackage()
   {
     return _package;
   }
 
+  /**
+   * Get the parent archive;
+   * @return the parent package.
+   */
   public JavaArchive getArchive()
   {
     return _archive;
   }
 
-  void setArchive(JavaArchive archive_p)
+  /**
+   * Set the parent archive.
+   * @param archive Archive to use.
+   */
+  void setArchive(JavaArchive archive)
   {
-    if (_archive!=archive_p)
+    if (_archive!=archive)
     {
       if (_archive!=null)
       {
         _archive.removeClass(this);
       }
-      _archive=archive_p;
-      if (archive_p!=null)
+      _archive=archive;
+      if (archive!=null)
       {
         _archive.addClass(this);
       }
     }
   }
 
+  /**
+   * Get the class dependencies.
+   * @return a set of classes.
+   */
   public Set<JavaClass> getClassDependencies()
   {
     return _roClassDeps;
   }
 
+  /**
+   * Get the package dependencies.
+   * @return a set of packages.
+   */
   public Set<JavaPackage> getPackageDependencies()
   {
     return _roPackageDeps;

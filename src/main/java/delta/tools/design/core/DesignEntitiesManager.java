@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * Manager for design entities (class, packages and archives).
  * @author DAM
  */
 public class DesignEntitiesManager
@@ -17,6 +18,9 @@ public class DesignEntitiesManager
   private HashMap<String,JavaPackage> _packages;
   private HashMap<String,JavaArchive> _archives;
 
+  /**
+   * Constructor.
+   */
   public DesignEntitiesManager()
   {
     _classes=new HashMap<String,JavaClass>();
@@ -24,6 +28,12 @@ public class DesignEntitiesManager
     _archives=new HashMap<String,JavaArchive>();
   }
 
+  /**
+   * Build/add a new class.
+   * @param fullyQualifiedName Name of the class to add.
+   * @param archiveName Archive that contains this class.
+   * @return the newly built class.
+   */
   public JavaClass buildClass(String fullyQualifiedName, String archiveName)
   {
     assert fullyQualifiedName!=null;
@@ -50,6 +60,11 @@ public class DesignEntitiesManager
     return clazz;
   }
 
+  /**
+   * Get a class description using its fully qualified name.
+   * @param classFQN Fully qualified name of the class to get.
+   * @return A class description or <code>null</code>.
+   */
   public JavaClass getClazz(String classFQN)
   {
     assert classFQN!=null;
@@ -57,6 +72,11 @@ public class DesignEntitiesManager
     return clazz;
   }
 
+  /**
+   * Build/add a new package.
+   * @param packageFQN Name of the package to add.
+   * @return the newly built package.
+   */
   public JavaPackage buildPackage(String packageFQN)
   {
     assert packageFQN!=null;
@@ -79,6 +99,11 @@ public class DesignEntitiesManager
     return pakkage;
   }
 
+  /**
+   * Get a package description using its fully qualified name.
+   * @param packageName Fully qualified name of the package to get.
+   * @return A package description or <code>null</code>.
+   */
   public JavaPackage getPackage(String packageName)
   {
     assert packageName!=null;
@@ -86,6 +111,11 @@ public class DesignEntitiesManager
     return pakkage;
   }
 
+  /**
+   * Get an archive description using its name.
+   * @param archiveName Name of the archive to get.
+   * @return An archive description or <code>null</code>.
+   */
   public JavaArchive getArchive(String archiveName)
   {
     assert archiveName!=null;
@@ -100,6 +130,10 @@ public class DesignEntitiesManager
     return archive;
   }
 
+  /**
+   * Dump the contents of this object on the given stream.
+   * @param out Output stream.
+   */
   public void dump(PrintStream out)
   {
     // Dump archives
@@ -107,7 +141,7 @@ public class DesignEntitiesManager
       out.println("Archives : ");
       Collection<JavaArchive> tmp=_archives.values();
       List<JavaArchive> archives=new ArrayList<JavaArchive>(tmp);
-      Collections.sort(archives,JavaArchive.getArchiveNameComparator());
+      Collections.sort(archives,new JavaArchive.ArchiveNameComparator());
       JavaArchive archive;
       for(Iterator<JavaArchive> it=archives.iterator();it.hasNext();)
       {
