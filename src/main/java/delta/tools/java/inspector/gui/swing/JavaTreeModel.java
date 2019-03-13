@@ -2,10 +2,17 @@ package delta.tools.java.inspector.gui.swing;
 
 import javax.swing.tree.DefaultTreeModel;
 
+/**
+ * Swing tree model that reflects some Java entities.
+ * @author DAM
+ */
 public class JavaTreeModel extends DefaultTreeModel
 {
   private static final long serialVersionUID=1L;
 
+  /**
+   * Constructor.
+   */
   public JavaTreeModel()
   {
     super(null);

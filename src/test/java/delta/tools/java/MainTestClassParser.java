@@ -1,11 +1,17 @@
 package delta.tools.java;
 
-import delta.common.utils.configuration.Configurations;
 import delta.tools.java.classes.ClassFile;
 import delta.tools.java.classes.ClassSource;
 
+/**
+ * @author DAM
+ * Main class to test the class parser.
+ */
 public class MainTestClassParser
 {
+  /**
+   * Constructor.
+   */
   public MainTestClassParser()
   {
     String path="delta.common.utils.files.iterator.FileIterator";
@@ -18,6 +24,10 @@ public class MainTestClassParser
     }
   }
 
+  /**
+   * Main method for this test.
+   * @param args Not used.
+   */
   public static void main(String[] args)
   {
     new MainTestClassParser();

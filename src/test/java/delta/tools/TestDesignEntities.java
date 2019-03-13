@@ -16,6 +16,10 @@ import delta.tools.design.core.DesignEntitiesManager;
 import delta.tools.design.core.JavaPackage;
 import junit.framework.TestCase;
 
+/**
+ * Test class for the design entities.
+ * @author DAM
+ */
 public class TestDesignEntities extends TestCase
 {
   /**
@@ -26,6 +30,9 @@ public class TestDesignEntities extends TestCase
     super("Design entities test");
   }
 
+  /**
+   * Test 'dump' method.
+   */
   public void testDump()
   {
     DesignEntitiesManager mgr=new DesignEntitiesManager();

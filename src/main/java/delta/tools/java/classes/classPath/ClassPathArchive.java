@@ -10,6 +10,10 @@ public class ClassPathArchive extends ClassPathElement
 {
   private static final String[] KNOWN_EXTENSIONS= {".jar",".zip"};
 
+  /**
+   * Constructor.
+   * @param path Archive file path.
+   */
   public ClassPathArchive(File path)
   {
     super(path);

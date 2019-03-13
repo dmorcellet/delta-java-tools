@@ -10,74 +10,118 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Description of a Java package.
+ * @author DAM
+ */
 public class JavaPackage
 {
-  private static PackageNameComparator _comparator=new PackageNameComparator();
   private String _name;
   private JavaPackage _parentPackage;
   private Set<JavaPackage> _subPackages;
   private Set<JavaClass> _classes;
   private Set<JavaClass> _roClasses;
 
-  JavaPackage(String name_p, JavaPackage parentPackage)
+  /**
+   * Constructor.
+   * @param name Package name.
+   * @param parentPackage Parent package (may be <code>null</code> for the root package.
+   */
+  JavaPackage(String name, JavaPackage parentPackage)
   {
-    _name=name_p;
+    _name=name;
     _parentPackage=parentPackage;
     _subPackages=new HashSet<JavaPackage>();
     _classes=new HashSet<JavaClass>();
     _roClasses=Collections.unmodifiableSet(_classes);
-    parentPackage.addSubPackage(this);
+    if (parentPackage!=null)
+    {
+      parentPackage.addSubPackage(this);
+    }
   }
 
+  /**
+   * Constructor for a "root" package.
+   */
   JavaPackage()
   {
-    _name="";
-    _parentPackage=null;
-    _subPackages=new HashSet<JavaPackage>();
-    _classes=new HashSet<JavaClass>();
+    this("",null);
   }
 
+  /**
+   * Get the name of this package.
+   * @return the name of this package.
+   */
   public String getName()
   {
     return _name;
   }
 
+  /**
+   * Get the parent package.
+   * @return a package or <code>null</code> if no parent.
+   */
   public JavaPackage getParentPackage()
   {
     return _parentPackage;
   }
 
+  /**
+   * Add a child package.
+   * @param pakkage Package to add.
+   */
   void addSubPackage(JavaPackage pakkage)
   {
     _subPackages.add(pakkage);
   }
 
+  /**
+   * Get all child packages.
+   * @return a possibly empty, but not <code>null</code> list of child packages, sorted by name.
+   */
   public List<JavaPackage> getSubPackages()
   {
     List<JavaPackage> ret=new ArrayList<JavaPackage>(_subPackages.size());
     ret.addAll(_subPackages);
-    Collections.sort(ret,_comparator);
+    Collections.sort(ret,new PackageNameComparator());
     return ret;
   }
 
+  /**
+   * Get all the Java class directly in this package.
+   * @return a possibly empty but not <code>null</code> set of classes, unmodifiable.
+   */
   public Set<JavaClass> getClasses()
   {
     return _roClasses;
   }
 
-  void addClass(JavaClass class_p)
+  /**
+   * Add a class in this package.
+   * @param clazz Class to add.
+   */
+  void addClass(JavaClass clazz)
   {
-    if (class_p.getPackage()==this)
+    if (clazz.getPackage()==this)
     {
-      _classes.add(class_p);
+      _classes.add(clazz);
     }
   }
 
+  /**
+   * Indicates if this package contains the given class.
+   * @param clazz Class to test.
+   * @return <code>true</code> if it does, <code>false</code> otherwise.
+   */
   public boolean containsClass(JavaClass clazz)
   {
     return _classes.contains(clazz);
   }
 
+  /**
+   * Get the fully qualified name of this package.
+   * @return A fully qualified package name.
+   */
   public String getFullname()
   {
     if (_parentPackage==null) return _name;
@@ -94,6 +138,11 @@ public class JavaPackage
     return getFullname();
   }
 
+  /**
+   * Dump the contents of this package to the given output stream.
+   * @param out Output stream.
+   * @param level Indentation level.
+   */
   public void dump(PrintStream out, int level)
   {
     for(int i=0;i<level;i++)
@@ -114,12 +163,11 @@ public class JavaPackage
     }
   }
 
-  public static PackageNameComparator getPackageNameComparator()
-  {
-    return _comparator;
-  }
-
-  private static class PackageNameComparator implements Comparator<JavaPackage>, Serializable
+  /**
+   * Comparator for packages, using their name.
+   * @author DAM
+   */
+  public static class PackageNameComparator implements Comparator<JavaPackage>, Serializable
   {
     /**
      * Compares java packages by their full name.

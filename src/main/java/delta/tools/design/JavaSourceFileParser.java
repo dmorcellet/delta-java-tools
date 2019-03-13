@@ -8,6 +8,7 @@ import delta.tools.design.core.DesignEntitiesManager;
 import delta.tools.design.core.JavaClass;
 
 /**
+ * Parser for Java source files.
  * @author DAM
  */
 public class JavaSourceFileParser
@@ -17,18 +18,26 @@ public class JavaSourceFileParser
 
   private DesignEntitiesManager _entitiesManager;
 
+  /**
+   * Constructor.
+   * @param entitiesManager Storage for parsed entities.
+   */
   public JavaSourceFileParser(DesignEntitiesManager entitiesManager)
   {
     _entitiesManager=entitiesManager;
   }
 
-  public void parse(File fichier_p)
+  /**
+   * Parse a Java source file.
+   * @param file File to use.
+   */
+  public void parse(File file)
   {
-    if (fichier_p==null)
+    if (file==null)
     {
       return;
     }
-    String fileName=fichier_p.getName();
+    String fileName=file.getName();
     if (!fileName.endsWith(JAVA_EXTENSION))
     {
       return;
@@ -39,7 +48,7 @@ public class JavaSourceFileParser
 
     JavaClass clazz=null;
     // classe_l.setArchive(SAArchive.getArchive(jarName));
-    TextFileReader reader=new TextFileReader(fichier_p);
+    TextFileReader reader=new TextFileReader(file);
     String ligne=null;
     if (reader.start())
     {

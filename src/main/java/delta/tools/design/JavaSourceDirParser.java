@@ -10,17 +10,26 @@ import delta.common.utils.files.filter.ExtensionPredicate;
 import delta.tools.design.core.DesignEntitiesManager;
 
 /**
+ * Parser for Java source files in a directory.
  * @author DAM
  */
 public class JavaSourceDirParser
 {
   private DesignEntitiesManager _entitiesManager;
 
+  /**
+   * Constructor.
+   * @param entitiesManager Storage for parsed entities.
+   */
   public JavaSourceDirParser(DesignEntitiesManager entitiesManager)
   {
     _entitiesManager=entitiesManager;
   }
 
+  /**
+   * Find all Java source files in the given directory and parse them into the managed entities storage.
+   * @param root Directory to use.
+   */
   public void parse(File root)
   {
     FilesFinder finder=new FilesFinder();

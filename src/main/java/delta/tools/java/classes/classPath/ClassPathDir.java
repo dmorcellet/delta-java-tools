@@ -3,10 +3,15 @@ package delta.tools.java.classes.classPath;
 import java.io.File;
 
 /**
+ * Represents a CLASSPATH element that is an directory.
  * @author DAM
  */
 public class ClassPathDir extends ClassPathElement
 {
+  /**
+   * Constructor.
+   * @param path Directory path.
+   */
   public ClassPathDir(File path)
   {
     super(path);

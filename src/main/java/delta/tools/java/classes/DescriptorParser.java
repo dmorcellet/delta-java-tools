@@ -2,21 +2,41 @@ package delta.tools.java.classes;
 
 import java.util.ArrayList;
 
+/**
+ * Parser for encoded descriptors (fields, methods).
+ * @author DAM
+ */
 public class DescriptorParser
 {
   private int _position;
 
+  /**
+   * Constructor.
+   */
   public DescriptorParser()
   {
     _position=0;
   }
 
+  /**
+   * Parse a field descriptor.
+   * @param fieldDescriptor Field descriptor to parse.
+   * @param useFullyQualifiedNames Indicates if the output shall use fully qualified name or not.
+   * @return A displayable field type.
+   */
   public String parseFieldType(String fieldDescriptor, boolean useFullyQualifiedNames)
   {
     _position=0;
     return parseType(fieldDescriptor,useFullyQualifiedNames);
   }
 
+  /**
+   * Parse a method descriptor.
+   * @param methodDescriptor Method descriptor to parse.
+   * @param methodName Method name.
+   * @param useFullyQualifiedNames Indicates if the output shall use fully qualified name or not.
+   * @return A displayable method prototype.
+   */
   public String parseMethodDescriptor(String methodDescriptor, String methodName, boolean useFullyQualifiedNames)
   {
     int max=methodDescriptor.length();

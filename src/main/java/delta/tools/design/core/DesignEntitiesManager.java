@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import delta.tools.design.core.JavaPackage.PackageNameComparator;
+
 /**
  * Manager for design entities (class, packages and archives).
  * @author DAM
@@ -154,7 +156,7 @@ public class DesignEntitiesManager
       out.println("Packages : ");
       Collection<JavaPackage> tmp=_packages.values();
       List<JavaPackage> packages=new ArrayList<JavaPackage>(tmp);
-      Collections.sort(packages,JavaPackage.getPackageNameComparator());
+      Collections.sort(packages,new PackageNameComparator());
       JavaPackage pakkage;
       for(Iterator<JavaPackage> it=packages.iterator();it.hasNext();)
       {

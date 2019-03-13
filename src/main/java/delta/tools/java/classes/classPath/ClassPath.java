@@ -7,12 +7,16 @@ import java.util.Iterator;
 import delta.common.utils.text.StringSplitter;
 
 /**
+ * Classpath.
  * @author DAM
  */
 public class ClassPath
 {
   private ArrayList<ClassPathElement> _elements;
 
+  /**
+   * Constructor.
+   */
   public ClassPath()
   {
     _elements=new ArrayList<ClassPathElement>();
