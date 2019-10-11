@@ -47,7 +47,7 @@ public class JavaSourceFileParser
     String packageName="";
 
     JavaClass clazz=null;
-    // classe_l.setArchive(SAArchive.getArchive(jarName));
+    // clazz.setArchive(SAArchive.getArchive(jarName));
     TextFileReader reader=new TextFileReader(file);
     String ligne=null;
     if (reader.start())
@@ -62,15 +62,15 @@ public class JavaSourceFileParser
         ligne=ligne.trim();
         if (ligne.startsWith("import "))
         {
-          StringTokenizer stImport_l=new StringTokenizer(ligne);
-          stImport_l.nextToken(); // import
-          String nomImport_l=stImport_l.nextToken().trim();
-          if (nomImport_l.endsWith(";"))
+          StringTokenizer stImport=new StringTokenizer(ligne);
+          stImport.nextToken(); // import
+          String nomImport=stImport.nextToken().trim();
+          if (nomImport.endsWith(";"))
           {
-            nomImport_l=nomImport_l.substring(0,nomImport_l.length()-1);
-            nomImport_l=nomImport_l.trim();
+            nomImport=nomImport.substring(0,nomImport.length()-1);
+            nomImport=nomImport.trim();
           }
-          JavaClass importedClass=getClass(nomImport_l);
+          JavaClass importedClass=getClass(nomImport);
           if (importedClass!=null)
           {
             if (clazz==null)
