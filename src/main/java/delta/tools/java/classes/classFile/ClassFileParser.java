@@ -11,7 +11,6 @@ import delta.tools.java.classes.ClassFileConstants;
 import delta.tools.java.classes.ClassMethod;
 import delta.tools.java.classes.ClassNameAndType;
 import delta.tools.java.classes.NameAndDescriptor;
-import delta.tools.utils.ToolsLoggers;
 
 /**
  * Parse for class files.
@@ -19,7 +18,7 @@ import delta.tools.utils.ToolsLoggers;
  */
 public class ClassFileParser
 {
-  private static final Logger _logger=ToolsLoggers.getToolsLogger();
+  private static final Logger LOGGER=Logger.getLogger(ClassFileParser.class);
 
   private ClassFile _classFile;
   private DataInputStream _dis;
@@ -118,7 +117,7 @@ public class ClassFileParser
           break;
           default:
           {
-            _logger.error("Unknown tag : "+tag+" (i="+i+")");
+            LOGGER.error("Unknown tag : "+tag+" (i="+i+")");
           }
         }
         //System.out.println("Constant pool #"+i+": "+_constantsPool[i]);
@@ -171,7 +170,7 @@ public class ClassFileParser
     }
     catch (IOException e)
     {
-      _logger.error("",e);
+      LOGGER.error("",e);
     }
   }
 
