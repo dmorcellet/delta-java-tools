@@ -1,5 +1,7 @@
 package delta.tools;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
@@ -8,55 +10,58 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import delta.common.utils.files.FilesFinder;
 import delta.common.utils.files.filter.ExtensionPredicate;
 import delta.tools.design.DependenciesComputer;
 import delta.tools.design.JavaSourceFileParser;
 import delta.tools.design.core.DesignEntitiesManager;
 import delta.tools.design.core.JavaPackage;
-import junit.framework.TestCase;
 
 /**
  * Test class for the design entities.
  * @author DAM
  */
-public class TestDesignEntities extends TestCase
+@DisplayName("Design entities test")
+class TestDesignEntities
 {
   /**
-   * Constructor.
+   * Test build.
    */
-  public TestDesignEntities()
+  @Test
+  void testBuild()
   {
-    super("Design entities test");
+    DesignEntitiesManager mgr=new DesignEntitiesManager();
+    mgr.buildClass(TestDesignEntities.class.getName(),"delta");
+    mgr.buildClass(JavaPackage.class.getName(),"delta");
+    mgr.buildClass(Test.class.getName(),"junit");
+    assertNotNull(mgr.getClazz(Test.class.getName()));
   }
 
   /**
    * Test 'dump' method.
    */
-  public void testDump()
+  @Test
+  void testDump()
   {
     DesignEntitiesManager mgr=new DesignEntitiesManager();
-    /*
-     * mgr.buildClass(TestDesignEntities.class.getName(),"delta");
-     * mgr.buildClass(JavaPackage.class.getName(),"delta");
-     * mgr.buildClass(TestCase.class.getName(),"junit");
-     */
 
     File src=new File("src").getAbsoluteFile();
     File codeRoot=new File(new File(src,"main"),"java");
     FilesFinder finder=new FilesFinder();
     FileFilter filter=new ExtensionPredicate("java",false);
     List<File> files=finder.find(FilesFinder.ABSOLUTE_MODE,codeRoot,filter,true);
-    File javaFile;
     JavaSourceFileParser parser=new JavaSourceFileParser(mgr);
-    for(Iterator<File> it=files.iterator();it.hasNext();)
+    for(File javaFile : files)
     {
-      javaFile=it.next();
       parser.parse(javaFile);
     }
-    // JavaPackage rootPackage=mgr.getPackage("");
-    // rootPackage.dump(System.out,-1);
-    // mgr.dump(System.out);
+    JavaPackage rootPackage=mgr.getPackage("");
+    assertNotNull(rootPackage);
+    rootPackage.dump(System.out,-1);
+    mgr.dump(System.out);
     DependenciesComputer deps=new DependenciesComputer(mgr);
     {
       String thisClassName=TestDesignEntities.class.getName();
